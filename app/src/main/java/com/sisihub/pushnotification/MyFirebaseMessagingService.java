@@ -35,7 +35,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
         notificationCompat.setContentTitle("Maseno");
         notificationCompat.setContentText(message);
-       notificationCompat.setTicker("New Push Notification");
+        notificationCompat.setTicker("New Push Notification");
         notificationCompat.setNumber(++number);
         notificationCompat.setAutoCancel(true);
         notificationCompat.setSmallIcon(R.drawable.custom_logo);

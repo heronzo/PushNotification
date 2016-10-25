@@ -1,5 +1,6 @@
 package com.sisihub.pushnotification;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ The sign in activity handling user authentication both by the fcm server and the
 public class SisgnIn extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
         Button signIn;
     private GoogleApiClient mGoogleApiClient;
+    private ProgressDialog progress;
     private FirebaseAuth mFirebaseAuth;
     private static final int REC_SNIN = 9001;
     private static final String TAG = "SignInActivity";
@@ -44,7 +46,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
         img = (ImageView) findViewById(R.id.imageView) ;
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.my_animation);
         //img.startAnimation(animation);
-
+        progress = new ProgressDialog(this);
         signIn.setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -69,6 +71,28 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
      *signIn method
      */
     private void signIn() {
+        progress.setMessage("Fetching Accounts ");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
+        progress.show();
+        final int totalProgressTime = 50;
+        final Thread tr = new Thread(){
+            @Override
+            public void run() {
+                int jumpTime = 0;
+                while(jumpTime < totalProgressTime){
+                    try {
+                        sleep(50);
+                        jumpTime += 5;
+                        progress.setProgress(jumpTime);
+                    } catch (InterruptedException e) {
+                  // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        tr.start();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, 9001);
 
