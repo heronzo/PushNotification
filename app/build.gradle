@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.sisihub.pushnotification"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE-FIREBASE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    //firebase deps
+    compile 'com.google.firebase:firebase-messaging:9.4.0'
+    compile 'com.google.firebase:firebase-auth:9.4.0'
+    compile 'com.google.firebase:firebase-database:9.4.0'
+    compile 'com.google.firebase:firebase-config:9.4.0'
+    compile 'com.google.android.gms:play-services-appinvite:9.4.0'
+    compile 'com.google.android.gms:play-services-ads:9.4.0'
+    compile 'com.google.firebase:firebase-crash:9.4.0'
+
+    // Google
+    compile 'com.google.android.gms:play-services-auth:9.4.0'
+
+    //fbUI
+    compile 'com.firebaseui:firebase-ui-database:0.4.0'
+
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    //compile 'com.squareup.okhttp3:okhttp:3.4.0-RC1'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+
+    /* Tstdeps
+    androidTestCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support:support-annotations:23.2.1'*/
+}
+apply plugin: 'com.google.gms.google-services'

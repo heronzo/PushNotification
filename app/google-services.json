@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "95179481672",
+    "firebase_url": "https://pushnotification-26045.firebaseio.com",
+    "project_id": "pushnotification-26045",
+    "storage_bucket": "pushnotification-26045.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95179481672:android:83f3018f11975bde",
+        "android_client_info": {
+          "package_name": "com.sisihub.pushnotification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "95179481672-6nq2napfgabtbsgu3ogcecr9du81aea4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKEd4rYn9jawj262izMSlzuTYR9wLl_HY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
