@@ -54,7 +54,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
                 .requestEmail()
                 .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                .enableAutoManage(this/* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
     }
@@ -75,14 +75,14 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
         progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progress.setIndeterminate(true);
         progress.show();
-        final int totalProgressTime = 50;
+        final int totalProgressTime = 20;
         final Thread tr = new Thread(){
             @Override
             public void run() {
                 int jumpTime = 0;
                 while(jumpTime < totalProgressTime){
                     try {
-                        sleep(50);
+                        sleep(20);
                         jumpTime += 5;
                         progress.setProgress(jumpTime);
                     } catch (InterruptedException e) {
@@ -94,7 +94,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
         };
         tr.start();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, 9001);
+        startActivityForResult(signInIntent, REC_SNIN);
 
     }
 

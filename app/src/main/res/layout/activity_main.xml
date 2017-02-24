@@ -9,14 +9,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sisihub.pushnotification.MainActivity">
 
-    <EditText
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:background="#d5d3d3"-->
+        <!--android:id="@+id/Edit1"-->
+        <!--android:autoLink="web"/>-->
+    <!---->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="#d5d3d3"
-        android:id="@+id/Edit1"
-        android:autoLink="web"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/tvViewMessage"/>
 
 </RelativeLayout>

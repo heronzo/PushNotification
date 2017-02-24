@@ -9,6 +9,8 @@ import android.support.v7.app.NotificationCompat;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * Created by HERONS on 8/10/2016.
  * making use of the FirebaseMessagingService service incorporate firebase gradle services
@@ -21,6 +23,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
         showNotification(remoteMessage.getData().get("message"));
+        EventBus.getDefault().post(remoteMessage.getNotification().getBody());
 
     }
 /**

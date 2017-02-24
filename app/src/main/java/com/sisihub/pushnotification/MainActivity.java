@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -19,9 +20,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     EditText et1;
+    TextView vMsg;
+    String messages = "No new notifications";
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mFirebaseDatabaseReference;
@@ -41,6 +48,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Set default username is anonymous.
         mUsername = ANONYMOUS;
+        EventBus.getDefault().register(this);
+
+        //et1 = (EditText) findViewById(R.id.Edit1);
+        vMsg = (TextView) findViewById(R.id.tvViewMessage);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
@@ -63,7 +74,38 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
-    }
+
+        if(getIntent().getExtras() !=null){
+
+            messages = getIntent().getExtras().getString("message");
+            if (messages==null){
+                messages = "No new notifications";
+            }
+
+        }
+
+        vMsg.setText("Message:\t"+messages);
+    }/*
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String message) {
+        //et1.setText(message);
+        vMsg.setText(message);
+    };
+    /*
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void onMessageEvent(String message){
+        vMsg.setText(message);
+    }*/
+    /*
+    @Subscribe(threadMode = ThreadMode.ASYNC)
+    public void onMessage(String message){
+        vMsg.setText(message);
+    };
+    */
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(String message) {
+        vMsg.setText("Message \t"+message +"\n\n" +"Link: www.maseno.ac.ke");
+    };
 
     @Override
     protected void onStart() {
@@ -75,8 +117,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 setContentView(R.layout.activity_main);
                 // extract the extra-data in the Notification
                 String msg = extras.getString("message");
-                et1 = (EditText) findViewById( R.id.Edit1 );
-                et1.setText(msg);
+                //et1 = (EditText) findViewById( R.id.Edit1 );
+                //et1.setText(msg);
             }
         }
 
@@ -91,8 +133,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
                 setContentView(R.layout.activity_main);
                 // extract the extra-data in the Notification
                 String msg = extras.getString("message");
-                et1 = (EditText) findViewById( R.id.Edit1 );
-                et1.setText(msg);
+                //et1 = (EditText) findViewById( R.id.Edit1 );
+                //et1.setText(msg);
             }
         }
     }
