@@ -23,5 +23,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvViewMessage"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tagline"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/homeTag"
+        android:textColor="@color/colorPrimary" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/homeName"
+        android:textStyle="normal|bold|italic"
+        android:textColor="@color/colorPrimary" />
 
 </RelativeLayout>

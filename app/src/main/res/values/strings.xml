@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">Maseno University</string>
+    <string name="app_name">Maseno</string>
+    <string name="tagline"><i><b>The Fountain Of Excellence</b></i></string>
+    <string name="name"><i><b><color>Maseno University</color></b></i></string>
 </resources>
