@@ -1,4 +1,4 @@
-package com.sisihub.pushnotification;
+package com.sisihub.pushnotification.notificaations;
 
 import android.util.Log;
 

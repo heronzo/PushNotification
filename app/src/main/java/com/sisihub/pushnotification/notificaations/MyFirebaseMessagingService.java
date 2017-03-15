@@ -1,4 +1,4 @@
-package com.sisihub.pushnotification;
+package com.sisihub.pushnotification.notificaations;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +8,8 @@ import android.support.v7.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.sisihub.pushnotification.R;
+import com.sisihub.pushnotification.notificaations.MainActivity;
 
 import org.greenrobot.eventbus.EventBus;
 
