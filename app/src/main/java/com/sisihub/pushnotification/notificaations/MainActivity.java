@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,16 +22,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sisihub.pushnotification.R;
+import com.sisihub.pushnotification.home.HomeActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     EditText et1;
     TextView vMsg;
     String messages = "No new notifications";
+    Button bt;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private DatabaseReference mFirebaseDatabaseReference;
@@ -53,12 +57,14 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
         //et1 = (EditText) findViewById(R.id.Edit1);
         vMsg = (TextView) findViewById(R.id.tvViewMessage);
+        bt = (Button) findViewById(R.id.button2) ;
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         FirebaseMessaging.getInstance().subscribeToTopic( "Test" );
         FirebaseInstanceId.getInstance().getToken();
+        bt.setOnClickListener(this);
 
         if (mFirebaseUser == null) {
             // Not signed in, launch the Sign In activity
@@ -144,5 +150,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }

@@ -30,7 +30,12 @@
         </service>
 
         <activity android:name=".notificaations.SisgnIn" />
-        <activity android:name=".home.HomeActivity"></activity>
+        <activity android:name=".home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.HOMEACTIVITY"/>
+                <category android:name="android.intent.category.HOMEACTIVITY"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

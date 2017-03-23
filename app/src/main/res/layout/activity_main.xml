@@ -43,4 +43,16 @@
         android:textColor="@color/footerText"
         android:textSize="10dp"/>
 
+    <Button
+        android:text="Click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/homeTag"
+        android:layout_toLeftOf="@+id/homeTag"
+        android:layout_toStartOf="@+id/homeTag"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="104dp"
+        android:id="@+id/button2" />
+
 </RelativeLayout>

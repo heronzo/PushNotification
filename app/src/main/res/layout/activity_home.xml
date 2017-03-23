@@ -9,9 +9,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sisihub.pushnotification.home.HomeActivity">
+
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/homeGrid"></GridView>
+        android:id="@+id/homeGrid"
+        android:verticalSpacing="40dip"
+        android:horizontalSpacing="5dip"
+        android:numColumns="auto_fit"
+        android:columnWidth="100dip"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:layout_marginTop="100dp"></GridView>
 
 </RelativeLayout>
