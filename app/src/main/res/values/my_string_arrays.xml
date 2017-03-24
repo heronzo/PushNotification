@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_array">
+        <item>Personal Information</item>
+        <item>Personal Information Editor</item>
+        <item>Hostel Booking</item>
+        <item>Units Registration</item>
+        <item>Exam Card</item>
+        <item>Exam Results</item>
+        <item>Somu Voting</item>
+        <item>Lecturers Evaluation</item>
+        <item>Graduation Application</item>
+    </string-array>
+</resources>
