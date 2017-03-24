@@ -2,4 +2,14 @@
     <string name="app_name">Maseno</string>
     <string name="tagline"><i><b>The Fountain Of Excellence</b></i></string>
     <string name="name"><i><b><color>Maseno University</color></b></i></string>
+    <string name="home">Home</string>
+    <string name="notifications">Notifications</string>
+    <string name="portal">Students Portal</string>
+    <string name="about">About</string>
+    <string name="title_activity_students_portal">StudentsPortal</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

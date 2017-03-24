@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sisihub.pushnotification.R;
+import com.sisihub.pushnotification.home.Home;
 import com.sisihub.pushnotification.home.HomeActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
    // private FirebaseRecyclerAdapter<FriendlyMessage, MessageViewHolder>
      //       mFirebaseAdapter;
    private SharedPreferences mSharedPreferences;
+    private SharedPreferences mSharedPreferences1;
     private String mUsername;
     public static final String ANONYMOUS = "anonymous";
     private String mPhotoUrl;
@@ -51,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         setContentView(R.layout.activity_main);
         onNewIntent(getIntent());
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPreferences1 = getSharedPreferences("Saved Values", MODE_PRIVATE);
         // Set default username is anonymous.
         mUsername = ANONYMOUS;
         EventBus.getDefault().register(this);
@@ -103,12 +106,20 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
     public void onMessageEvent(String message){
         vMsg.setText(message);
     }*/
+
+    @Override
+    protected void onPause() {
+        SharedPreferences.Editor editor = mSharedPreferences1.edit();
+        editor.putString("No new Notifcations", vMsg.getText().toString());
+        super.onPause();
+    }
+
     /*
-    @Subscribe(threadMode = ThreadMode.ASYNC)
-    public void onMessage(String message){
-        vMsg.setText(message);
-    };
-    */
+        @Subscribe(threadMode = ThreadMode.ASYNC)
+        public void onMessage(String message){
+            vMsg.setText(message);
+        };
+        */
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String message) {
         vMsg.setText("Message \t"+message +"\n\n" +"Link: www.maseno.ac.ke");
@@ -154,6 +165,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(this, HomeActivity.class));
+        startActivity(new Intent(this, Home.class));
     }
 }
