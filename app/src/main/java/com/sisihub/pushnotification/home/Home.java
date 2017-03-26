@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.sisihub.pushnotification.R;
 import com.sisihub.pushnotification.notificaations.MainActivity;
+import com.sisihub.pushnotification.portal.MainFragment;
 import com.sisihub.pushnotification.portal.StudentsPortal;
 
 public class Home extends AppCompatActivity implements View.OnClickListener {
@@ -23,6 +24,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener {
         hB = (ImageButton) findViewById(R.id.homeButton);
         portB = (ImageButton) findViewById(R.id.portalButton);
         notB.setOnClickListener(this);
+        portB.setOnClickListener(this);
     }
 
     @Override

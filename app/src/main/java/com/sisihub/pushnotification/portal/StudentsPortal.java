@@ -3,6 +3,7 @@ package com.sisihub.pushnotification.portal;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,12 +19,18 @@ import com.sisihub.pushnotification.R;
 
 public class StudentsPortal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    NavigationView navigationView;
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_students_portal);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        MainFragment mainFragment = new MainFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(mainFragment);
+        fragmentTransaction.commit();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -41,7 +48,7 @@ public class StudentsPortal extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
