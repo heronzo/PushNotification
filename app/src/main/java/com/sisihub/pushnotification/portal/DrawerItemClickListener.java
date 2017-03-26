@@ -1,6 +1,6 @@
 package com.sisihub.pushnotification.portal;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +18,7 @@ public class DrawerItemClickListener implements ListView.OnItemClickListener {
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
     }
-
+        public void selectItem(int position){
+        }
 
 }
