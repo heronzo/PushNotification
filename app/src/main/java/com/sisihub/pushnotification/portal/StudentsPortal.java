@@ -1,5 +1,6 @@
 package com.sisihub.pushnotification.portal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -90,13 +91,16 @@ public class StudentsPortal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.details) {
+            MainFragment mainFragment = new MainFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.show(mainFragment);
+            fragmentTransaction.commit();
+        } else if (id == R.id.detailsUpdater) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.unitsRegistration) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.examResults) {
 
         } else if (id == R.id.nav_share) {
 
