@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.sisihub.pushnotification.R;
+import com.sisihub.pushnotification.notificaations.MainActivity;
 
 
 public class StudentsPortal extends AppCompatActivity
@@ -92,19 +93,22 @@ public class StudentsPortal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.details) {
-            MainFragment mainFragment = new MainFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.show(mainFragment);
-            fragmentTransaction.commit();
+//            MainFragment mainFragment = new MainFragment();
+//            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.replace(R.id.frameLnav, mainFragment);
+//            fragmentTransaction.commit();
         } else if (id == R.id.detailsUpdater) {
 
         } else if (id == R.id.unitsRegistration) {
 
         } else if (id == R.id.examResults) {
 
+
         } else if (id == R.id.nav_share) {
 
+
         } else if (id == R.id.nav_send) {
+
 
         }
 

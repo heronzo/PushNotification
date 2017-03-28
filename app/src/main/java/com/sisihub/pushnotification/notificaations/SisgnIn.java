@@ -26,6 +26,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.sisihub.pushnotification.R;
+import com.sisihub.pushnotification.home.Home;
+import com.sisihub.pushnotification.portal.Portal;
 /*
 The sign in activity handling user authentication both by the fcm server and the gmail server
  */
@@ -110,7 +112,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, Home.class));
 
             } else {
                 // Google Sign In failed
@@ -137,7 +139,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
                             Toast.makeText(SisgnIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(SisgnIn.this, MainActivity.class));
+                            startActivity(new Intent(SisgnIn.this, Portal.class));
                             Toast.makeText(SisgnIn.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }
@@ -149,6 +151,6 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
         Log.d(TAG, "onConnectionFailed:" + connectionResult);
-        Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Google Services error.", Toast.LENGTH_SHORT).show();
     }
 }
