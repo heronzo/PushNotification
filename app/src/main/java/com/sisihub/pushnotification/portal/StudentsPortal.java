@@ -95,7 +95,7 @@ public class StudentsPortal extends AppCompatActivity
         if (id == R.id.details) {
 //            MainFragment mainFragment = new MainFragment();
 //            android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.frameLnav, mainFragment);
+//            fragmentTransaction.add(R.id.frameLnav, mainFragment);
 //            fragmentTransaction.commit();
         } else if (id == R.id.detailsUpdater) {
 

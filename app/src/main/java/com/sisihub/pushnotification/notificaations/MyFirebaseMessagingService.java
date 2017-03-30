@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -24,25 +26,27 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        showNotification(remoteMessage.getData().get("message"));
+        showNotification( remoteMessage.getData().get("title"),remoteMessage.getData().get("message"));
         EventBus.getDefault().post(remoteMessage.getNotification().getBody());
 
     }
 /**
 *The method implementing push notification's appearing at the notification area
 */
-    private void showNotification(String message) {
+    private void showNotification(String messageTitle, String message) {
 
         Intent intent=new Intent(this,MainActivity.class);
         intent.putExtra("Message", message);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationCompat = new NotificationCompat.Builder(this);
-        notificationCompat.setContentTitle("Maseno");
+        notificationCompat.setContentTitle(messageTitle);
         notificationCompat.setContentText(message);
         notificationCompat.setTicker("New Push Notification");
         notificationCompat.setNumber(++number);
         notificationCompat.setAutoCancel(true);
+        notificationCompat.setSound(defaultSoundUri);
         notificationCompat.setSmallIcon(R.drawable.custom_logo);
         notificationCompat.setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
