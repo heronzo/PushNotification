@@ -3,6 +3,8 @@
     package="com.sisihub.pushnotification">
 
     <uses-permission android:name="android.permision.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:allowBackup="true"
@@ -41,20 +43,12 @@
                 <!--<category android:name="android.intent.category.LAUNCHER"/>-->
             <!--</intent-filter>-->
             </activity>
-        <activity android:name=".home.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.HOMEACTIVITY" />
-
-                <category android:name="android.intent.category.HOMEACTIVITY" />
-            </intent-filter>
-        </activity>
 
 
         <activity
             android:name=".portal.StudentsPortal"
             android:label="@string/title_activity_students_portal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".portal.Portal"></activity>
     </application>
 
 </manifest>

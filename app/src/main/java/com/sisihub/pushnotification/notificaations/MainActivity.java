@@ -23,7 +23,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.sisihub.pushnotification.R;
 import com.sisihub.pushnotification.home.Home;
-import com.sisihub.pushnotification.home.HomeActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -92,9 +91,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
             if (messages==null){
                 messages = "No new notifications";
             }
-            vMsg.setText("Message:\t"+messages);
+
         }
 
+        vMsg.setText("Message:\t"+messages);
     }/*
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(String message) {
@@ -125,37 +125,37 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
         vMsg.setText("Message \t"+message +"\n\n" +"Link: www.maseno.ac.ke");
     };
 
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//            Intent intent = new Intent();
-//        Bundle extras = intent.getExtras();
-//        if (extras != null) {
-//            if (extras.containsKey("message")) {
-//                setContentView(R.layout.activity_main);
-//                // extract the extra-data in the Notification
-//                String msg = extras.getString("message");
-//                //et1 = (EditText) findViewById( R.id.Edit1 );
-//                //et1.setText(msg);
-//            }
-//        }
-//
-//
-//    }
-//
-//    @Override
-//    public void onNewIntent(Intent intent) {
-//        Bundle extras = intent.getExtras();
-//        if (extras != null) {
-//            if (extras.containsKey("message")) {
-//                setContentView(R.layout.activity_main);
-//                // extract the extra-data in the Notification
-//                String msg = extras.getString("message");
-//                //et1 = (EditText) findViewById( R.id.Edit1 );
-//                //et1.setText(msg);
-//            }
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+            Intent intent = new Intent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            if (extras.containsKey("message")) {
+                setContentView(R.layout.activity_main);
+                // extract the extra-data in the Notification
+                String msg = extras.getString("message");
+                //et1 = (EditText) findViewById( R.id.Edit1 );
+                //et1.setText(msg);
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            if (extras.containsKey("message")) {
+                setContentView(R.layout.activity_main);
+                // extract the extra-data in the Notification
+                String msg = extras.getString("message");
+                //et1 = (EditText) findViewById( R.id.Edit1 );
+                //et1.setText(msg);
+            }
+        }
+    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

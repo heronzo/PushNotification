@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.sisihub.pushnotification.R;
 import com.sisihub.pushnotification.home.Home;
-import com.sisihub.pushnotification.portal.Portal;
+import com.sisihub.pushnotification.portal.StudentsPortal;
 /*
 The sign in activity handling user authentication both by the fcm server and the gmail server
  */
@@ -139,7 +139,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
                             Toast.makeText(SisgnIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(SisgnIn.this, Portal.class));
+                            startActivity(new Intent(SisgnIn.this, StudentsPortal.class));
                             Toast.makeText(SisgnIn.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }
