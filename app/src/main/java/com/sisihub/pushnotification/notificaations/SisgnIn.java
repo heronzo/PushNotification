@@ -47,9 +47,9 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
         signIn = (Button) findViewById(R.id.sign_in);
         mFirebaseAuth = FirebaseAuth.getInstance();
         img = (ImageView) findViewById(R.id.imageView) ;
-        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.my_animation);
+        //Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.my_animation);
         //img.startAnimation(animation);
-        progress = new ProgressDialog(this);
+        //progress = new ProgressDialog(this);
         signIn.setOnClickListener(this);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -74,28 +74,28 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
      *signIn method
      */
     private void signIn() {
-        progress.setMessage("Fetching Accounts ");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.setIndeterminate(true);
-        progress.show();
-        final int totalProgressTime = 20;
-        final Thread tr = new Thread(){
-            @Override
-            public void run() {
-                int jumpTime = 0;
-                while(jumpTime < totalProgressTime){
-                    try {
-                        sleep(20);
-                        jumpTime += 5;
-                        progress.setProgress(jumpTime);
-                    } catch (InterruptedException e) {
-                  // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
-        tr.start();
+//        progress.setMessage("Fetching Accounts ");
+//        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progress.setIndeterminate(true);
+//        progress.show();
+//        final int totalProgressTime = 20;
+//        final Thread tr = new Thread(){
+//            @Override
+//            public void run() {
+//                int jumpTime = 0;
+//                while(jumpTime < totalProgressTime){
+//                    try {
+//                        sleep(20);
+//                        jumpTime += 5;
+//                        progress.setProgress(jumpTime);
+//                    } catch (InterruptedException e) {
+//                  // TODO Auto-generated catch block
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        };
+//        tr.start();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, REC_SNIN);
 
@@ -111,13 +111,14 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
+                startActivity(new Intent(this, MainActivity.class));
                 firebaseAuthWithGoogle(account);
-                startActivity(new Intent(this, Home.class));
+
 
             } else {
                 // Google Sign In failed
                 Log.e(TAG, "Google Sign In failed.");
-                startActivity(new Intent(this, MainActivity.class));
+                Toast.makeText(this,"Google Sign Failed", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -139,7 +140,7 @@ public class SisgnIn extends AppCompatActivity implements View.OnClickListener, 
                             Toast.makeText(SisgnIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            startActivity(new Intent(SisgnIn.this, StudentsPortal.class));
+                            //startActivity(new Intent(SisgnIn.this, StudentsPortal.class));
                             Toast.makeText(SisgnIn.this, "Authentication successful", Toast.LENGTH_SHORT).show();
                             finish();
                         }
